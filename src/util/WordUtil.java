@@ -2,17 +2,51 @@ package util;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+
+import fileops.ReadDic;
+import game.GameDifficulty;
 
 public class WordUtil {
+	
+	private final Set<String>allWords;
+	private final Map<String,ArrayList<String>>wordMap;
+	
+	public WordUtil(GameDifficulty gameDifficulty) {
+		ReadDic readDic=new ReadDic(4);
+		allWords=readDic.getAllWords();
+		wordMap=readDic.getWordMap();
+	}
 	
 	public static String takeInputWord() throws Exception {
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		return br.readLine();
 	}
 	
-	// implement when dic is ready
-	public static boolean isValidWord(String word) {
-		return true;
+    public static boolean containsOnlyUnique(String word) {
+          String arr[] = word.split("");
+          Arrays.sort(arr);
+          for(int i=0;i<arr.length-1;i++) {
+                if(arr[i].equals(arr[i+1]))
+                      return false;
+          }
+          return true;
+    }
+    
+    public String getRandomWordFromMap() {
+    	Random generator = new Random();
+    	Object[] values = this.wordMap.values().toArray();
+    	ArrayList<String> randomValue = (ArrayList<String>)values[generator.nextInt(values.length)];
+    	return randomValue.get(generator.nextInt(randomValue.size()));
+    }
+	
+
+	public boolean isWordInDic(String word) {
+		return allWords.contains(word);
 	}
 
 	public static String createHash(String word) {
