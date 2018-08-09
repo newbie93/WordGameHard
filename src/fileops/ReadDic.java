@@ -29,7 +29,7 @@ import util.WordUtil;
 
 public class ReadDic {
 
-	private static final String DIC_FILE="sowpods.txt";
+	private static final String DIC_FILE="/User/righosh/Downloads/sowpods.txt";
 
 	private int length;
 	private Map<String,ArrayList<String>> wordMap;

@@ -9,6 +9,14 @@ public class WordGame {
 	private GameDifficulty gameDifficulty;
 	private String hiddenWord;
 	private WordUtil wordUtil;
+
+	public WordGame(GameDifficulty gameDifficulty) {
+		this.gameDifficulty=gameDifficulty;
+		this.gameState=GameState.InProgress;
+		System.out.println();
+		this.wordUtil=new WordUtil(gameDifficulty.getValue());
+		this.hiddenWord=wordUtil.getRandomWordFromMap();
+	}
 	
 	public GameState getGameState() {
 		return gameState;
@@ -16,13 +24,6 @@ public class WordGame {
 
 	public GameDifficulty getGameDifficulty() {
 		return gameDifficulty;
-	}
-
-	public WordGame(GameDifficulty gameDifficulty) {
-		this.gameDifficulty=gameDifficulty;
-		this.gameState=GameState.InProgress;
-		this.wordUtil=new WordUtil(gameDifficulty);
-		this.hiddenWord=wordUtil.getRandomWordFromMap();
 	}
 	
 	private void setHumanWinner() {

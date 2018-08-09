@@ -16,10 +16,12 @@ public class WordUtil {
 	private final Set<String>allWords;
 	private final Map<String,ArrayList<String>>wordMap;
 	
-	public WordUtil(GameDifficulty gameDifficulty) {
-		ReadDic readDic=new ReadDic(4);
+	public WordUtil(int length) {
+		ReadDic readDic=new ReadDic(length);
 		allWords=readDic.getAllWords();
 		wordMap=readDic.getWordMap();
+		for(String str:allWords)
+			System.out.println(str);
 	}
 	
 	public static String takeInputWord() throws Exception {
@@ -40,6 +42,7 @@ public class WordUtil {
     public String getRandomWordFromMap() {
     	Random generator = new Random();
     	Object[] values = this.wordMap.values().toArray();
+    	//System.out.println(values.length);
     	ArrayList<String> randomValue = (ArrayList<String>)values[generator.nextInt(values.length)];
     	return randomValue.get(generator.nextInt(randomValue.size()));
     }
