@@ -33,7 +33,7 @@ public class WordGame {
 		this.gameState=GameState.ComputerWins;
 	}
 
-	private int processWordClueByUser(String word) {
+	public int processWordClueByUser(String word) {
 		if(!wordUtil.isWordInDic(word))
 			return -1;
 		if(word.equalsIgnoreCase(hiddenWord)) {

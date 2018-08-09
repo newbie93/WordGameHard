@@ -15,16 +15,24 @@ public class Driver {
 		this.wordGame=new WordGame(GameDifficulty.valueOf(gameDiff));
 	}
 	
-	private void start() {
-		Menu.displayWelcome();
+	public int processInput() throws Exception {
+		Menu.dispolayAskForWord();
+		int val=-1;
+		while((val=wordGame.processWordClueByUser(WordUtil.takeInputWord()))<0);
+		return val;
 	}
 	
-	
-	public void playGame() {
-		int matches;
-		String word;
+	public void playGame() throws Exception {
+		int val;
+		Menu.displayWelcome();
 		while(wordGame.getGameState()==GameState.InProgress) {
-			
+			val=processInput();
+			if(val==1000)
+				continue;
+			Menu.displayCharFreqFeedback(val);
+			/*
+			 * 	give a word ask for matches...
+			 * */
 		}
 		if(wordGame.getGameState()==GameState.ComputerWins)
 			Menu.displayComputerWins();
