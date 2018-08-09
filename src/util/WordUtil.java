@@ -20,8 +20,8 @@ public class WordUtil {
 		ReadDic readDic=new ReadDic(length);
 		allWords=readDic.getAllWords();
 		wordMap=readDic.getWordMap();
-		for(String str:allWords)
-			System.out.println(str);
+		//for(String str:allWords)
+		//	System.out.println(str);
 	}
 	
 	public static String takeInputWord() throws Exception {
@@ -70,9 +70,9 @@ public class WordUtil {
 		for(int i=0;i<26;i++)
 			arr1[i]=arr2[i]=false;
 		for(char c:word1.toCharArray())
-			arr1[c-'a']=true;
+			arr1[c-'A']=true;
 		for(char c:word2.toCharArray())
-			arr2[c-'a']=true;
+			arr2[c-'A']=true;
 		for(int i=0;i<26;i++) {
 			if(arr1[i]&&arr2[i])
 				matches++;

@@ -6,9 +6,9 @@ import java.util.Map;
 
 public enum GameDifficulty {
 	
-	EASY(1),
-	MODERATE(2),
-	HARD(3); 
+	EASY(4),
+	MODERATE(5),
+	HARD(6); 
 	
 	private int value;
 	private static Map map = new HashMap<>();

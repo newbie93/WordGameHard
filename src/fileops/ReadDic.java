@@ -29,7 +29,7 @@ import util.WordUtil;
 
 public class ReadDic {
 
-	private static final String DIC_FILE="/User/righosh/Downloads/sowpods.txt";
+	private static final String DIC_FILE="/Users/righosh/Downloads/sowpods.txt";
 
 	private int length;
 	private Map<String,ArrayList<String>> wordMap;
@@ -39,6 +39,7 @@ public class ReadDic {
 		this.length=length;
 		wordMap=new HashMap<>();
 		allWords=new HashSet<>();
+		createWordList();
 	}
 
 
@@ -48,6 +49,7 @@ public class ReadDic {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(new File(DIC_FILE)));
 			while((str=br.readLine())!=null) {
+				//System.out.println(str);
 				if (str.length()==this.length) {
 					allWords.add(str);
 					if(WordUtil.containsOnlyUnique(str)) {

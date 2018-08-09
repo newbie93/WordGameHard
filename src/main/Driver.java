@@ -27,7 +27,7 @@ public class Driver {
 		Menu.displayWelcome();
 		while(wordGame.getGameState()==GameState.InProgress) {
 			val=processInput();
-			if(val==1000)
+			if(val==WordGame.HIDDEN_WORD_FOUND)
 				continue;
 			Menu.displayCharFreqFeedback(val);
 			/*

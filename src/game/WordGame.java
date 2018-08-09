@@ -4,6 +4,8 @@ package game;
 import util.WordUtil;
 
 public class WordGame {
+	
+	public static final int HIDDEN_WORD_FOUND=1000;
 
 	private GameState gameState;
 	private GameDifficulty gameDifficulty;
@@ -13,9 +15,9 @@ public class WordGame {
 	public WordGame(GameDifficulty gameDifficulty) {
 		this.gameDifficulty=gameDifficulty;
 		this.gameState=GameState.InProgress;
-		System.out.println();
 		this.wordUtil=new WordUtil(gameDifficulty.getValue());
 		this.hiddenWord=wordUtil.getRandomWordFromMap();
+		System.out.println(hiddenWord);
 	}
 	
 	public GameState getGameState() {
@@ -39,7 +41,7 @@ public class WordGame {
 			return -1;
 		if(word.equalsIgnoreCase(hiddenWord)) {
 			setHumanWinner();
-			return 1000;
+			return HIDDEN_WORD_FOUND;
 		}
 		return WordUtil.matchingChars(word, hiddenWord);
 	}
