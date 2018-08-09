@@ -1,6 +1,9 @@
 
 package game;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import util.WordUtil;
 
 public class WordGame {
@@ -10,13 +13,13 @@ public class WordGame {
 	private GameState gameState;
 	private GameDifficulty gameDifficulty;
 	private String hiddenWord;
-	private WordUtil wordUtil;
+	public WordUtil wordUtil;
 
 	public WordGame(GameDifficulty gameDifficulty) {
 		this.gameDifficulty=gameDifficulty;
 		this.gameState=GameState.InProgress;
 		this.wordUtil=new WordUtil(gameDifficulty.getValue());
-		this.hiddenWord=wordUtil.getRandomWordFromMap();
+		this.hiddenWord=wordUtil.getRandomWordFromWordList();
 		System.out.println(hiddenWord);
 	}
 	
@@ -32,8 +35,14 @@ public class WordGame {
 		this.gameState=GameState.HumanWins;
 	}
 	
-	private void setComputerWinner() {
+	public void setComputerWinner() {
 		this.gameState=GameState.ComputerWins;
+	}
+	
+	
+	
+	public String chooseComputersClue(){
+		return wordUtil.getRandomWordFromWordList();
 	}
 
 	public int processWordClueByUser(String word) {

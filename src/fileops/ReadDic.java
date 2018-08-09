@@ -24,21 +24,18 @@ import java.util.Set;
 import util.WordUtil;
 
 
-
-
-
 public class ReadDic {
 
 	private static final String DIC_FILE="/Users/righosh/Downloads/sowpods.txt";
 
 	private int length;
-	private Map<String,ArrayList<String>> wordMap;
-	private Set<String>allWords;
+	private ArrayList<String> wordList;
+	private ArrayList<String> allWords;
 
 	public ReadDic(int length) {
 		this.length=length;
-		wordMap=new HashMap<>();
-		allWords=new HashSet<>();
+		wordList=new ArrayList<>();
+		allWords=new ArrayList<>();
 		createWordList();
 	}
 
@@ -52,16 +49,8 @@ public class ReadDic {
 				//System.out.println(str);
 				if (str.length()==this.length) {
 					allWords.add(str);
-					if(WordUtil.containsOnlyUnique(str)) {
-						hashValue = WordUtil.createHash(str);
-						if (!wordMap.containsKey(hashValue)) {
-							al = new ArrayList<String>();
-							al.add(str);
-							wordMap.put(hashValue, al);
-						}
-						else
-							wordMap.get(hashValue).add(str);
-					}
+					if(WordUtil.containsOnlyUnique(str))
+						wordList.add(str);
 				}
 			}
 		} 
@@ -70,11 +59,11 @@ public class ReadDic {
 		}
 	}
 	
-	public Map<String,ArrayList<String>>getWordMap() {
-		return this.wordMap;
+	public ArrayList<String>getWordList() {
+		return this.wordList;
 	}
 	
-	public Set<String>getAllWords() {
+	public ArrayList<String>getAllWords() {
 		return this.allWords;
 	}
 

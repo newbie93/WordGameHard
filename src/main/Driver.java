@@ -16,7 +16,7 @@ public class Driver {
 	}
 	
 	public int processInput() throws Exception {
-		Menu.dispolayAskForWord();
+		Menu.displayAskForWord();
 		int val=-1;
 		while((val=wordGame.processWordClueByUser(WordUtil.takeInputWord()))<0);
 		return val;
@@ -30,6 +30,16 @@ public class Driver {
 			if(val==WordGame.HIDDEN_WORD_FOUND)
 				continue;
 			Menu.displayCharFreqFeedback(val);
+			String chosenWord = wordGame.chooseComputersClue();
+			Menu.displayComputersChoice(chosenWord);
+			Menu.displayAskForMatchingCharacters();
+			String userInput = WordUtil.takeInputWord();
+			if(userInput.equals("CORRECT")){
+				wordGame.setComputerWinner();
+				continue;
+			}
+			int matchingCharacters = Integer.parseInt(userInput);
+			wordGame.wordUtil.updateWordList(matchingCharacters,chosenWord);
 			/*
 			 * 	give a word ask for matches...
 			 * */

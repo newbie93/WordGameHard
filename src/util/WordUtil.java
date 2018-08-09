@@ -13,15 +13,24 @@ import game.GameDifficulty;
 
 public class WordUtil {
 	
-	private final Set<String>allWords;
-	private final Map<String,ArrayList<String>>wordMap;
+	private final ArrayList<String>allWords;
+	private ArrayList<String>wordList;
 	
 	public WordUtil(int length) {
 		ReadDic readDic=new ReadDic(length);
 		allWords=readDic.getAllWords();
-		wordMap=readDic.getWordMap();
+		wordList=readDic.getWordList();
 		//for(String str:allWords)
 		//	System.out.println(str);
+	}
+	
+	public void updateWordList(int matchingCharacters, String chosenWord){
+		ArrayList<String> newWords =  new ArrayList<>();
+		for(int i=0;i<wordList.size();i++)
+			if(matchingCharacters == matchingChars(wordList.get(i),chosenWord)){
+				newWords.add(wordList.get(i));
+			}
+		wordList = newWords;
 	}
 	
 	public static String takeInputWord() throws Exception {
@@ -39,12 +48,10 @@ public class WordUtil {
           return true;
     }
     
-    public String getRandomWordFromMap() {
+    public String getRandomWordFromWordList() {
     	Random generator = new Random();
-    	Object[] values = this.wordMap.values().toArray();
-    	//System.out.println(values.length);
-    	ArrayList<String> randomValue = (ArrayList<String>)values[generator.nextInt(values.length)];
-    	return randomValue.get(generator.nextInt(randomValue.size()));
+    	//ArrayList<String> randomValue = (ArrayList<String>)values[generator.nextInt(values.length)];
+    	return wordList.get(generator.nextInt(wordList.size()));
     }
 	
 

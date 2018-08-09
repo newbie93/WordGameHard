@@ -14,17 +14,27 @@ public class Menu {
 	private static final String DIFF_LEVEL="Enter 1 for EASY, 2 for MODERATE and 3 for HARD";
 	private static final String COMP_WIN="I win! Better luck next time... :)";
 	private static final String HUMAN_WINS="You Win! Congratulations... :)";
+	private static final String CHOOSE_COMP="I CHOOSE: ";
+	private static final String ASK_MATCHING_CHARACTERS="Please tell how many matching characters are there!";
 
 
 	public static void displayWelcome() {
 		System.out.println(WELCOME_MSG);
+	}
+	
+	public static void displayComputersChoice(String s){
+		System.out.println(CHOOSE_COMP+s);
+	}
+	
+	public static void displayAskForMatchingCharacters(){
+		System.out.println(ASK_MATCHING_CHARACTERS);
 	}
 
 	public static void displayDifficultyLevel() {
 		System.out.println(DIFF_LEVEL);
 	}
 
-	public static void dispolayAskForWord() {
+	public static void displayAskForWord() {
 		System.out.println(ASK_WORD);
 	}
 
